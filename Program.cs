@@ -1,4 +1,6 @@
 using AddressBookMVC.Data;
+using AddressBookMVC.Services;
+using AddressBookMVC.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,11 +11,18 @@ builder.Services.AddControllersWithViews();
 // new code
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration));
 });
+
+builder.Services.AddScoped<IImageService, BasicImageService>();
+
 // end new code
 
 var app = builder.Build();
+
+//new code
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+//end new code
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
