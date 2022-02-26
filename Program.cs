@@ -10,12 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // new code
-
-var debug = DataUtility.GetConnectionString(builder.Configuration);
-Trace.WriteLine(debug);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    
     options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration));
 });
 
