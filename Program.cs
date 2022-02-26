@@ -2,6 +2,7 @@ using AddressBookMVC.Data;
 using AddressBookMVC.Services;
 using AddressBookMVC.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // new code
+
+var debug = DataUtility.GetConnectionString(builder.Configuration);
+Trace.WriteLine(debug);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
+    
     options.UseNpgsql(DataUtility.GetConnectionString(builder.Configuration));
 });
 
