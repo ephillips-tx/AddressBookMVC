@@ -46,10 +46,10 @@ var app = builder.Build();
 //new code
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
-var dbContext = app.Services
-                   .CreateScope().ServiceProvider
-                   .GetRequiredService<ApplicationDbContext>();
-await dbContext.Database.MigrateAsync();
+//var dbContext = app.Services
+//                   .CreateScope().ServiceProvider
+//                   .GetRequiredService<ApplicationDbContext>();
+//await dbContext.Database.MigrateAsync();
 //end new code
 
 // Configure the HTTP request pipeline.
