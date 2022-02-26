@@ -2,7 +2,7 @@
 
 namespace AddressBookMVC.Data
 {
-    public class DataUtility
+    public static class DataUtility
     {
         public static string GetConnectionString(IConfiguration configuration)
         {
