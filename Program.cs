@@ -2,7 +2,7 @@ using AddressBookMVC.Data;
 using AddressBookMVC.Services;
 using AddressBookMVC.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+using AddressBookMVC.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +21,13 @@ builder.Services.AddScoped<IImageService, BasicImageService>();
 var app = builder.Build();
 
 //new code
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
+
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 //end new code
 
