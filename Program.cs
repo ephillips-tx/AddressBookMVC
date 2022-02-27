@@ -21,13 +21,6 @@ builder.Services.AddScoped<IImageService, BasicImageService>();
 var app = builder.Build();
 
 //new code
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    SeedData.Initialize(services);
-}
-
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 //end new code
 

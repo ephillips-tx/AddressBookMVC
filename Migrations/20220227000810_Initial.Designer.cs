@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AddressBookMVC.Data.Migrations
+namespace AddressBookMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220219031014_Initial")]
+    [Migration("20220227000810_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,6 +40,7 @@ namespace AddressBookMVC.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Created")
@@ -68,6 +69,7 @@ namespace AddressBookMVC.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("State")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Zip")
