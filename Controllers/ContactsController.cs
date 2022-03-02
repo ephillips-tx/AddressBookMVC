@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable disable
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -156,9 +157,7 @@ namespace AddressBookMVC.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var contact = await _context.Contacts.FindAsync(id);
-#pragma warning disable CS8604 // Possible null reference argument.
             _context.Contacts.Remove(contact);
-#pragma warning restore CS8604 // Possible null reference argument.
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
