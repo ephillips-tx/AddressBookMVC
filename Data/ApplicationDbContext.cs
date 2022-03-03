@@ -9,6 +9,6 @@ namespace AddressBookMVC.Data
         {
         }
 
-        public DbSet<Contact>? Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; } = null!;
     }
 }
